@@ -1,2 +1,2 @@
-# object-pool-extended
-A method 
+# Unity Object Pool
+A way to manage object pools using Unity's native solution
