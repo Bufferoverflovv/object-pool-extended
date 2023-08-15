@@ -121,9 +121,15 @@ namespace Buffer.ObjectPooling
         /// Release an object back to the pool
         /// </summary>
         /// <param name="obj"></param>
+        /// <exception cref="Exception"></exception>
         public static void Release(GameObject obj)
         {
-            var pool = GetPool(obj);
+            var poolObject = obj.GetComponent<IPoolObject>();
+            if (poolObject == null)
+                throw new Exception($"Object {obj.name} does not implement IPoolObject");
+
+            var prefab = poolObject.Prefab;
+            var pool = GetPool(prefab);
             pool.Release(obj);
         }
 
