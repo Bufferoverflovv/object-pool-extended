@@ -6,6 +6,11 @@ namespace Buffer.ObjectPooling
     public interface IPoolObject
     {
         /// <summary>
+        /// The prefab used as a key to the pool.
+        /// </summary>
+        GameObject Prefab { get; set; }
+        
+        /// <summary>
         /// Time to wait before returning to pool.
         /// </summary>
         int WaitTime { get; }
