@@ -95,7 +95,14 @@ namespace Buffer.ObjectPooling
         public static GameObject Get(GameObject prefab)
         {
             var pool = GetPool(prefab);
-            return pool.Get();
+            GameObject obj = pool.Get();
+
+            if (obj.GetComponent<IPoolObject>() is IPoolObject poolObject && !poolObject.IsInitialized)
+            {
+                poolObject.Prefab = prefab;
+            }
+
+            return obj;
         }
 
         /// <summary>
