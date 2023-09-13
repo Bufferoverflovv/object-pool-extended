@@ -100,6 +100,7 @@ namespace Buffer.ObjectPooling
             if (obj.GetComponent<IPoolObject>() is IPoolObject poolObject && !poolObject.IsInitialized)
             {
                 poolObject.Prefab = prefab;
+                poolObject.Initialize();
             }
 
             return obj;
@@ -118,6 +119,7 @@ namespace Buffer.ObjectPooling
 
             if (obj.GetComponent<IPoolObject>() is IPoolObject poolObject && !poolObject.IsInitialized)
             {
+                poolObject.Prefab = prefab;
                 poolObject.Initialize(initializationArgs);
             }
 
